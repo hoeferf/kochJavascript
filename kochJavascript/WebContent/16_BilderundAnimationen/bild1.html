@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bild</title>
+<script type="text/javascript">
+
+function verschieben() {
+	var x = document.getElementById("bild");
+	x.style.left = "300px";
+	x.style.top = "100px";
+}
+
+</script>
+</head>
+<body>
+
+<div id="bild"
+	style="position: absolute; left: 100px; top: 50px;">
+	<img src="obj.gif" alt="Bild"
+		width="278" height="216">
+</div>
+
+<form>
+	<p>
+	<input type="button" onclick="verschieben()"
+		value="Bild verschieben">
+	</p>
+</form>
+</body>
+</html>

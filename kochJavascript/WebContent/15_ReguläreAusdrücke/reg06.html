@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegExp</title>
+<script type="text/javascript">
+
+function test(eing) {
+
+	var reg = /stefan/i;
+
+	if (reg.exec(eing))
+		location.href = "stefan.html";
+	else location.href = "default.html";
+}
+
+</script>
+</head>
+<body>
+
+Bitte geben Sie Ihren Namen ein:<br>
+<form onsubmit="test(this.eing.value);return false;">
+	<p>
+	<input type="text" id="eing" name="eing" size="30">
+	<input type="button" value="Login"
+		onclick="test(this.form.eing.value)">
+	</p>
+</form>
+
+</body>
+</html>

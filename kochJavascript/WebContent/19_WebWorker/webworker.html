@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Worker</title>
+
+	<script type="text/javascript">
+
+	var worker = new Worker("webworker.js");
+	worker.postMessage(2);
+
+	worker.onmessage = function (event) {
+		alert(event.data);
+	};
+
+	</script>
+
+</head>
+<body>
+</body>
+</html>

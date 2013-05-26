@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XML</title>
+<meta http-equiv="Content-Script-Type"
+	content="text/javascript" />
+
+<script type="text/javascript">
+
+function getXMLHttpRequest() {
+	var httpReq = null;
+	if (window.XMLHttpRequest) {
+		httpReq = new XMLHttpRequest();
+	} else if (typeof ActiveXObject != "undefined") {
+		httpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return httpReq;
+}
+
+function sendRequest(url, handler, param) {
+	req = getXMLHttpRequest();
+	if (req) {
+		req.onreadystatechange = handler;
+		req.open("get", url + "?value=" + param, true);
+		req.setRequestHeader("Content-Type",
+			"application/x-www-form-urlencoded");
+		req.send(null);
+	}
+}
+
+function info(num) {
+	sendRequest("staedte.php", anzeigen, num);
+}
+
+function anzeigen() {
+	if (req.readyState == 4) {
+
+		var xml = req.responseText;
+		var xmlDOM;
+
+		if (typeof ActiveXObject != "undefined") {
+			xmlDOM = new ActiveXObject("Microsoft.XmlDom");
+			xmlDOM.loadXML(xml);
+		} else {
+			var parser = new DOMParser();
+			xmlDOM = parser.parseFromString(xml,"text/xml");
+		}
+
+		var n1 = xmlDOM.getElementsByTagName("name")[0];
+		var n2 = xmlDOM.getElementsByTagName("einwohner")[0];
+
+		var stadt = n1.childNodes[0].nodeValue;
+		var einwohner = n2.childNodes[0].nodeValue;
+
+		var ausg = document.getElementById("ausgabe");
+		ausg.innerHTML =
+			stadt + ", " + einwohner + " Tsd. Einwohner";
+	}
+}
+
+</script>
+
+</head>
+<body>
+<p>
+
+<map name="staedte">
+	<area shape="circle" alt="Berlin"
+		coords="264,136,7" onmouseover="info(1)" />
+	<area shape="circle" alt="Hamburg"
+		coords="151,86,7" onmouseover="info(2)" />
+	<area shape="circle" alt="M&uuml;nchen"
+		coords="207,380,7" onmouseover="info(3)" />
+	<area shape="circle" alt="K&ouml;ln"
+		coords="46,233,7" onmouseover="info(4)" />
+	<area shape="circle" alt="Frankfurt"
+		coords="106,278,7" onmouseover="info(5)" />
+	<area shape="circle" alt="Stuttgart"
+		coords="126,353,7" onmouseover="info(6)" />
+	<area shape="circle" alt="Hannover"
+		coords="143,151,7" onmouseover="info(7)" />
+	<area shape="circle" alt="Dresden"
+		coords="276,219,7" onmouseover="info(8)" />
+	<area shape="circle" alt="Kiel"
+		coords="156,38,7" onmouseover="info(9)" />
+	<area shape="circle" alt="Rostock"
+		coords="223,49,7" onmouseover="info(10)" />
+</map>
+
+<img src="karte.gif" alt="Karte Deutschland"
+	usemap="#staedte" style="border: 1px" width="337" height="441" />
+
+</p>
+
+<div id="ausgabe" style="position: absolute; left: 80px;">
+</div>
+
+</body>
+</html>

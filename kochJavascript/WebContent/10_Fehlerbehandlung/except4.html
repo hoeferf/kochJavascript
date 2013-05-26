@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exceptions</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function test() {
+	throw new Error("Fehler!");
+}
+
+try {
+	test();
+} catch (e) {
+	alert(e.message);
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3C</title>
+<script type="text/javascript">
+
+function init() {
+
+	var evt = document.createEvent("MouseEvent");
+	evt.initEvent("click", true, true);
+
+	var eingabe = document.getElementById("eingabe");
+	eingabe.addEventListener("click", test, false);
+
+	// Ereignis ausloesen
+	eingabe.dispatchEvent(evt);
+
+}
+
+function test() {
+	alert("Click.");
+}
+
+</script>
+</head>
+<body onload="init()">
+
+<form>
+	<p>
+	<input type="text" id="eingabe">
+	</p>
+</form>
+
+</body>
+</html>

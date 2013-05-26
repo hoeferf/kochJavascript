@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+"use strict";
+
+var obj = {}
+
+Object.defineProperty(obj, "a",
+	{ value: "abc",
+		writable: false
+	});
+
+obj.a = "xyz"; // Fehler, da Strict Mode
+
+</script>
+</body>
+</html>

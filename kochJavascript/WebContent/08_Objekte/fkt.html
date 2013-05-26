@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Call by Reference</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function f(obj, x) {
+	obj.a = "xyz";
+	x = 12;
+}
+
+var obj = { a: "abc" };
+var x = 17;
+
+f(obj, x);
+alert(obj.a + " - " + x); // xyz - 17
+
+</script>
+</body>
+</html>

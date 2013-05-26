@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Radio</title>
+<script type="text/javascript">
+
+function test(radioGruppe) {
+	var gewaehlt = null;
+	for (i = 0; i < radioGruppe.length; i++) {
+		if (radioGruppe[i].checked)
+			gewaehlt = radioGruppe[i];
+	}
+	return gewaehlt;
+}
+
+function abfrage() {
+	var r = test(document.meinFormular.auswahl);
+	if (r != null) {
+		alert(r.value);
+	}
+}
+
+</script>
+</head>
+<body>
+<form id="meinFormular" name="meinFormular">
+	<p>
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option1" checked="checked">Option 1
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option2">Option 2
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option3">Option 3
+	<br>
+	<input type="button" value="Wert anzeigen"
+		onclick="abfrage()">
+	</p>
+</form>
+</body>
+</html>

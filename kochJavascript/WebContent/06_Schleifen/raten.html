@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Zahlenraten</title>
+<meta http-equiv="Content-Script-Type"
+	content="text/javascript" />
+
+<script type="text/javascript">
+function zahlenRaten() {
+	var zahl = Math.round(Math.random() * 100 + 0.5);
+	var fehler = 0;
+	var fertig = false;
+
+	while (!fertig) {
+		eingabe = prompt("Bitte erraten Sie die Zahl:","");
+		if (!eingabe) {
+			fertig = true;
+		} else {
+			if (eingabe == zahl) {
+				alert("Gewonnen!");
+				fertig = true;
+			} else {
+				fehler++;
+				if (eingabe < zahl)
+					alert("Geratene Zahl zu klein!\n" +
+						"Fehler: " + fehler)
+				else alert("Geratene Zahl zu gross!\n" +
+						"Fehler: " + fehler);
+			}
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+
+<p>
+Bitte klicken Sie auf die Schaltfl&auml;che, um ein Spiel zu starten:
+</p>
+<form>
+	<p>
+	<input type="button" value="Start"
+		onclick="zahlenRaten()">
+	</p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototype</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var X = function() {};
+
+var a = new X();
+var b = new X();
+
+X.prototype.name = "abc";
+
+alert(a.name); // abc
+alert(b.name); // abc
+
+</script>
+</body>
+</html>

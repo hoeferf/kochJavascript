@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3C</title>
+<script type="text/javascript">
+
+function init() {
+	var l1 = document.getElementById("l1");
+	l1.addEventListener("click", pruefen, false);
+}
+
+function pruefen(evt) {
+	if (!confirm("Seite verlassen?"))
+		evt.preventDefault();
+}
+
+</script>
+</head>
+<body onload="init()">
+<p>
+<a href="http://www.dpunkt.de/" id="l1">Link</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kapselung</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function Abc() {
+	this.a = 1;
+	var b = 4;
+
+	this.f = function() {
+		alert(this.a + quadrat(b));
+	}
+
+	function quadrat(x) { return x*x; }
+}
+
+var obj = new Abc();
+
+obj.f(); // Zugriff auf oeffentliche Methode
+alert(obj.a); // Zugriff auf oeffentliche Eigenschaft
+
+alert(obj.b); // 'undefined' da b privat
+alert(obj.quadrat(4)); // nicht moeglich da Methode privat
+
+</script>
+</body>
+</html>

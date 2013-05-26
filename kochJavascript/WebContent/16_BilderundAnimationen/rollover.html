@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Steine</title>
+
+<script type="text/javascript">
+
+var b = new Array();
+var browserOK = false;
+
+function init() {
+	// Browser überpruefen
+	if (Image && document.getElementById) browserOK = true
+	else return false;
+
+	for (i = 0; i < b.length; i++) {
+		// Bilder vorladen
+		var img = new Image();
+		img.src = b[i][2];
+
+		// Event-Handler definieren
+		var bild = document.getElementById(b[i][0]);
+		bild.onmouseover = an;
+		bild.onmouseout = aus;
+
+	}
+}
+
+function an() {
+	if (browserOK) {
+		var name = this.id;
+		for (i = 0; i < b.length; i++) {
+			var bild = document.getElementById(b[i][0]);
+			if (name != b[i][0]) {
+				// alle anderen Bilder zuruecksetzen
+				bild.src = b[i][1];
+			} else {
+				bild.src = b[i][2];
+			}
+		}
+	}
+}
+
+function aus() {
+	if (browserOK) {
+		// alle Bilder zuruecksetzen
+		for (i = 0; i < b.length; i++) {
+			var bild = document.getElementById(b[i][0]);
+			bild.src = b[i][1];
+		}
+	}
+}
+
+b[0] = ["bild1", "stein1f.jpg", "stein1t.jpg"];
+b[1] = ["bild2", "stein2f.jpg", "stein2t.jpg"];
+b[2] = ["bild3", "stein3f.jpg", "stein3t.jpg"];
+
+window.onload = init;
+
+</script>
+</head>
+
+<body>
+
+<a href="link1.html"><img id="bild1" src="stein1f.jpg"
+	alt="Stein1" width="100" height="80"
+	style="border: 0px"></a>
+
+<a href="link2.html"><img id="bild2" src="stein2f.jpg"
+	alt="Stein2" width="100" height="80"
+	style="border: 0px"></a>
+
+<a href="link3.html"><img id="bild3" src="stein3f.jpg"
+	alt="Stein3" width="100" height="80"
+	style="border: 0px"></a>
+
+</body>
+</html>

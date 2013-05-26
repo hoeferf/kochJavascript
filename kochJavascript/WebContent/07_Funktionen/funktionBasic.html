@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Funktionen</title>
+
+<script type="text/javascript">
+
+function schreibeText() {
+	var ausgabe = document.getElementById("ausgabe");
+	ausgabe.innerHTML += "Diese Seite ist toll! ";
+	ausgabe.innerHTML += "Man kann es nicht oft genug " +
+		"wiederholen... <br>";
+}
+
+</script>
+</head>
+<body>
+
+<div id="ausgabe"></div>
+
+<script type="text/javascript">
+
+// 3 Funktionsaufrufe
+schreibeText();
+schreibeText();
+schreibeText();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>with</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var obj = {
+	a: 10,
+	b: 20
+}
+
+with (obj) {
+	a = 12;
+	b = 5;
+}
+
+alert(obj.a);
+
+</script>
+</body>
+</html>

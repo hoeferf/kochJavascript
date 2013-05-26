@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegExp</title>
+<script type="text/javascript">
+
+function test(eing) {
+	var reg = /.+@.+/;
+	if (reg.exec(eing))
+		alert("Gueltige E-Mail-Adresse");
+	else alert("Ungueltige E-Mail-Adresse");
+}
+
+</script>
+</head>
+<body>
+
+Bitte geben Sie eine E-Mail-Adresse ein:<br />
+<form>
+	<p>
+	<input type="text" name="eingabe" size="30">
+	<input type="button" value="Test"
+		onclick="test(this.form.eingabe.value)">
+	</p>
+</form>
+
+</body>
+</html>

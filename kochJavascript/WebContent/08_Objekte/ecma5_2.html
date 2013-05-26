@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var X = function() {};
+
+var obj = Object.create(new X(),
+	{
+		a: { value: "abc", writable: false },
+		b: { value: "xyz", writable: true }
+	});
+
+alert(obj.a); // abc
+
+obj.a = "123";
+
+alert(obj.a); // abc
+
+</script>
+</body>
+</html>

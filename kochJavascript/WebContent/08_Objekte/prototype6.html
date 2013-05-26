@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototype</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function X() {
+	this.a = 123;
+	this.f = function() {
+		alert(this.a);
+	}
+}
+
+function Y() {
+	this.a = 456;
+}
+
+function Z() {
+	this.a = 789;
+	this.f = function() {
+		alert("xyz");
+	}
+}
+
+Y.prototype = new X();
+Z.prototype = new Y();
+
+var obj1 = new X();
+var obj2 = new Y();
+var obj3 = new Z();
+
+obj1.f(); // 123
+obj2.f(); // 456
+obj3.f(); // xyz
+
+</script>
+</body>
+</html>

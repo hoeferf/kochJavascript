@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var heute = new Date();
+
+alert("Jetzt ist es: " +
+	heute.getHours() + ":" +
+	((heute.getMinutes()<10) ? "0" : "") +
+	heute.getMinutes() + " Uhr.");
+
+alert("Datum: " +
+	heute.getDate() + "." +
+	(heute.getMonth() + 1) + "." +
+	heute.getFullYear());
+
+</script>
+</body>
+</html>

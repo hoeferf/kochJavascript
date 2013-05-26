@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vektor Beispiel</title>
+    <script type="text/javascript">
+    function init() {
+    	var canvas = document.getElementById("ausgabe");
+    	if (canvas.getContext) {
+        	var c = canvas.getContext("2d");
+
+			c.beginPath();
+			c.arc(35, 35, 25, 0, 2 * Math.PI, true);
+			c.stroke();
+
+			c.beginPath();
+			c.arc(100, 35, 25, 0, 2 * Math.PI, true);
+			c.fill();
+
+			c.beginPath();
+			c.arc(165, 35, 25, 0, 2/3 * Math.PI, true);
+			c.stroke();
+
+			c.beginPath();
+			c.arc(230, 35, 25, 0, 2/3 * Math.PI, false);
+			c.stroke();
+
+      	}
+    }
+    </script>
+  </head>
+  <body onload="init()">
+    <canvas id="ausgabe" width="500" height="300"></canvas>
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shared Worker</title>
+
+<script type="text/javascript">
+
+	var sw;
+
+	function init() {
+		sw = new SharedWorker("sharedworker.js");
+		sw.port.addEventListener("message", function (event) { alert(event.data) }, false);
+		sw.port.start();
+	}
+
+	function senden(txt) {
+		sw.port.postMessage(txt);
+	}
+
+</script>
+
+</head>
+<body onload="init()">
+	<form>
+		<input type="text" id="eingabe" value="">
+		<input type="button" value="Senden"
+			onclick="senden(this.form.eingabe.value)">
+	</form>
+
+	<div id="ausgabe">
+	</div>
+</body>
+</html>

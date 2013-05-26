@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegExp</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var str = 	"Dies ist ein String,\n" +
+			"der sich ueber mehrere\n" +
+			"Zeilen erstreckt";
+
+var erg = str.split(/\s+/);
+
+// Ausgabe des Arrays
+alert(erg.join(" - "));
+
+</script>
+
+</body>
+</html>

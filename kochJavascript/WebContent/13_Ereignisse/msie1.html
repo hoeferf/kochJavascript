@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MSIE</title>
+<script type="text/javascript">
+
+var ausg;
+
+function init() {
+	var x = document.getElementById("bild");
+	x.attachEvent("onmousemove", anzeigen);
+}
+
+function anzeigen() {
+	var x = window.event.offsetX;
+	var y = window.event.offsetY;
+
+	if (!ausg) ausg = document.getElementById("ausgabe");
+	ausg.innerHTML = "x: " + x + " y: " + y;
+}
+
+</script>
+</head>
+<body onload="init()">
+<p>
+<img src="obj.gif" id="bild" alt="Objekte"
+	width="278" height="216">
+</p>
+<div id="ausgabe"></div>
+</body>
+</html>

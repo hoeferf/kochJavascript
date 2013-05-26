@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Funktionen</title>
+
+<script type="text/javascript">
+
+function begruessung(name) {
+	var text = "Hallo " + name + "!";
+	alert(text);
+}
+
+</script>
+</head>
+<body>
+<p>Bitte identifiziere Dich:</p>
+<form>
+	<p>
+	<input type="button" value="Fred"
+		onclick="begruessung('Fred')">
+	<input type="button" value="Wilma"
+		onclick="begruessung('Wilma')">
+	<input type="button" value="Barney"
+		onclick="begruessung('Barney')">
+	<input type="button" value="Betty"
+		onclick="begruessung('Betty')">
+	</p>
+</form>
+</body>
+</html>

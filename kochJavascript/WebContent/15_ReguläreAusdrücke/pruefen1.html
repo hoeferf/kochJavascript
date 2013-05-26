@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Einfache Überprüfungen</title>
+<script type="text/javascript">
+
+function test(eingabe) {
+	if (eingabe.indexOf("@") != -1) alert("OK!")
+	else alert("Keine gueltige E-Mail-Adresse.");
+}
+
+</script>
+</head>
+<body>
+
+Bitte geben Sie eine E-Mail-Adresse ein:<br />
+<form>
+	<p>
+	<input type="text" name="eingabe" size="30">
+	<input type="button" value="Test"
+		onclick="test(this.form.eingabe.value)">
+	</p>
+</form>
+
+</body>
+</html>

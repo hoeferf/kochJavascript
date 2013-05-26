@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lokale Variablen</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function funktion1() {
+	// wird lokal definiert!
+	var y = 17;
+}
+
+function funktion2() {
+	// Fehler, da die lokale Variable y hier nicht
+	// bekannt ist
+	alert("Der Wert von y ist " + y);
+}
+
+// Funktionsaufrufe
+funktion1();
+funktion2();
+
+</script>
+</body>
+</html>

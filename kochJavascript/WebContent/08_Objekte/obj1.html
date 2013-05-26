@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objekte</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var person1 = new Object();
+
+person1.begruessung = function() {
+	alert("Hallo " + this.name + "!");
+}
+
+person1.name = "Fred";
+person1.begruessung();
+
+</script>
+</body>
+</html>

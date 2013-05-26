@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IFrame</title>
+
+<style type="text/css">
+
+	#iframe1 {	position: absolute;
+				top: 70px;
+				left: 7px; }
+
+</style>
+
+<script type="text/javascript">
+
+function test() {
+	var x = window.frames["iframe1"];
+	x.test1();
+}
+
+function testParent() {
+	alert("parent");
+}
+
+</script>
+
+</head>
+<body>
+
+<form>
+<input type="button" value="Anzeigen" onclick="test()">
+</form>
+
+<iframe src="seite1.html" id="iframe1" width="350" height="150"
+ scrolling="auto" frameborder="1"></iframe>
+
+</body>
+
+</html>

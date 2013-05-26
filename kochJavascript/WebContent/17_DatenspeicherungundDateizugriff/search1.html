@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Suchstrings</title>
+
+<script type="text/javascript">
+
+function seiteLaden(uebergabe) {
+	location.href = "search2.html?" +
+		encodeURIComponent(uebergabe);
+}
+
+</script>
+</head>
+<body>
+Bitte geben Sie einen Text ein, der an <br>
+die neue Seite &uuml;bergeben werden soll:
+<form>
+	<p>
+	<textarea id="eingabe" name="eingabe"
+		rows="5" cols="40"></textarea>
+	<br>
+	<input type="button" value="Neue Seite laden"
+		onclick="seiteLaden(this.form.eingabe.value)">
+	</p>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objekte</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function Person(n) {
+	this.name = n;
+	this.begruessung = function() {
+		alert("Hallo " + this.name + "!");
+	}
+}
+
+var person1 = new Person("Fred");
+person1.begruessung();
+
+var person2 = new Person("Wilma");
+person2.begruessung();
+
+</script>
+</body>
+</html>

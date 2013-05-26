@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fenster</title>
+
+<script type="text/javascript">
+
+function codeNeuesFenster() {
+	alert("Neues Fenster!");
+}
+
+function fktAufrufen() {
+	if (window.opener && window.opener.codeAltesFenster) {
+		window.opener.codeAltesFenster();
+	}
+}
+
+</script>
+</head>
+<body>
+<form>
+	<p>
+	<input type="button" value="Funktion aufrufen"
+		onclick="fktAufrufen()">
+	</p>
+</form>
+</body>
+</html>

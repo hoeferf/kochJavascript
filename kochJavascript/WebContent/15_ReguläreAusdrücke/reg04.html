@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegExp</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var str =	"Dieser String erstreckt sich\n" +
+			"ueber mehrere Zeilen";
+
+var reg = /\n/;
+if (reg.exec(str)) alert("Mehrere Zeilen.")
+else alert("Nur eine Zeile.");
+
+</script>
+
+</body>
+</html>

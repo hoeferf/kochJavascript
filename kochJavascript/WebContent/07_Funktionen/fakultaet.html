@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rekursive Funktionen</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function fakultaet(n) {
+	if (n != 1) {
+		// Aufruf von sich selbst
+		return n * fakultaet(n - 1);
+	}
+	else {
+		// Fakultaet von 1 ist gleich 1
+		return 1;
+	}
+}
+
+var x = fakultaet(10);
+alert(x);
+
+</script>
+</body>
+</html>

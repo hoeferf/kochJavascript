@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3C</title>
+<script type="text/javascript">
+
+function init() {
+	var b1 = document.getElementById("b1");
+	var f1 = document.getElementById("f1");
+	b1.addEventListener("click", ausgabe1, false);
+	f1.addEventListener("click", ausgabe2, false);
+	document.addEventListener("click", ausgabe3, false);
+}
+
+function ausgabe1(evt) {
+	alert("Button");
+}
+
+function ausgabe2(evt) {
+	alert("Formular");
+	evt.stopPropagation();
+}
+
+function ausgabe3(evt) {
+	alert("document");
+}
+
+</script>
+</head>
+<body onload="init()">
+
+<form id="f1">
+	<p>
+	<input type="button" id="b1" value="Button 1">
+	</p>
+</form>
+
+</body>
+</html>

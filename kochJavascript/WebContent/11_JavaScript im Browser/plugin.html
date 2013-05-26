@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Plugins</title>
+<meta http-equiv="Content-Script-Type"
+	content="text/javascript" />
+
+<script type="text/javascript">
+
+function pruefeFlash() {
+	if (navigator.mimeTypes.length > 0) {
+		return navigator.mimeTypes[
+			"application/x-shockwave-flash"].enabledPlugin != null;
+	} else if (window.ActiveXObject) {
+		try {
+			new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
+			return true;
+		} catch (e) {
+			return false;
+		}
+	} else {
+		return false
+	}
+}
+
+function pruefen() {
+	(pruefeFlash()) ? alert("Flash kann angezeigt werden.") :
+		alert("Flash kann nicht angezeigt werden.");
+}
+
+</script>
+
+</head>
+<body onload="pruefen()">
+</body>
+</html>

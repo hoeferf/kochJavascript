@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+</head>
+<body>
+<script type="text/javascript">
+
+// Date-Objekte erzeugen
+var heute = new Date();
+var jahr = heute.getFullYear();
+
+var weihnachten = new Date(jahr, 11, 24);
+
+// Ist Weinachten dieses Jahr schon vorbei?
+if (heute.getTime() > weihnachten.getTime())
+	weihnachten.setYear(jahr + 1);
+
+// Berechnung der Differenz
+var differenz = weihnachten.getTime() -
+	heute.getTime();
+var tage = Math.ceil( differenz /
+	(1000 * 60 * 60 * 24));
+
+// Ausgabe
+alert("Es sind noch " + tage + " Tage bis Weihnachten.");
+
+</script>
+</body>
+</html>

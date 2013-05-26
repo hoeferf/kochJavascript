@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XMLHttpRequest</title>
+
+<script type="text/javascript">
+
+var req = null;
+
+function init() {
+	req = getXMLHttpRequest();
+
+	req.onreadystatechange = test;
+	req.open("get", "test.txt", true);
+	req.send(null);
+}
+
+function getXMLHttpRequest() {
+	var httpReq = null;
+	if (window.XMLHttpRequest) {
+		httpReq= new XMLHttpRequest();
+	} else if (typeof ActiveXObject != "undefined") {
+		httpReq= new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return httpReq;
+}
+
+function test() {
+	if (req.readyState == 4) {
+		// Die Antwort des Servers liegt vor
+		var antwort = req.responseText;
+		alert(antwort);
+	}
+}
+
+</script>
+
+</head>
+<body onload="init()">
+Ajax.
+</body>
+</html>

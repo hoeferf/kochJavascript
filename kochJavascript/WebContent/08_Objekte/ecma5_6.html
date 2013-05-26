@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var obj = {
+	zaehler: 0,
+	monatWert: 1
+};
+
+Object.defineProperty(obj, "monat" , {
+	get: function() { this.zaehler++; return this.monatWert; },
+	set: function(x) {  var wert = parseInt(x);
+						if (wert>0 && wert<=12)
+							this.monatWert = wert;
+					 }
+});
+
+obj.monat = 4;
+
+alert(obj.monat);
+alert(obj.zaehler);
+
+</script>
+</body>
+</html>

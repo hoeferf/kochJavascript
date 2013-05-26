@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVG</title>
+    <script type="text/javascript">
+
+		// Hinweis: funktioniert in Chrome nur, wenn diese Seite
+		// über einen Webserver geladen wird
+
+		function init() {
+			var f = window.frames[0];
+			var k = f.document.getElementById("kreis1");
+
+			k.addEventListener("click", aendern, false);
+		}
+
+		function aendern() {
+			var f = window.frames[0];
+			var k = f.document.getElementById("kreis1");
+
+			if (k.getAttribute("r") == 50) k.setAttribute("r", 80);
+			else k.setAttribute("r", 50);
+		}
+
+    </script>
+  </head>
+  <body onload="init()">
+
+	<iframe src="kreis.svg" style="border: none" width="300" height="200">
+	</iframe>
+
+  </body>
+</html>
+
+

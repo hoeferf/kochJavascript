@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>File API</title>
+
+<script type="text/javascript">
+
+function init() {
+	var eing = document.getElementById("eingabe")
+	eing.addEventListener("change", dateiGewaehlt, false);
+}
+
+function dateiGewaehlt(e) {
+	var dateien = e.target.files;
+
+	var ausgabe = document.getElementById("ausgabe");
+	var str = "<ul>";
+
+	for (var i = 0; i < dateien.length; i++) {
+		var f = dateien[i];
+		str += "<li>" + f.name + " - " +
+					    Math.round(f.size/1024) + " KB - " +
+					    f.type + "</li>";
+	}
+
+	str += "</ul>";
+
+	ausgabe.innerHTML = str;
+}
+
+</script>
+
+</head>
+<body onload="init()">
+
+<form>
+<input type="file" id="eingabe" multiple>
+</form>
+
+<div id="ausgabe">
+</div>
+
+</body>
+</html>

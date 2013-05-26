@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Urspr&uuml;ngliches Fenster</title>
+
+<script type="text/javascript">
+
+var fenster1;
+
+function fensterOeffnen() {
+	fenster1 = open("fenster5.html");
+}
+
+function codeAltesFenster() {
+	alert("Ursprüngliches Fenster!");
+}
+
+function fktAufrufen() {
+	if (fenster1 && fenster1.codeNeuesFenster) {
+		fenster1.codeNeuesFenster();
+	}
+}
+
+</script>
+</head>
+<body>
+<form>
+	<p>
+	<input type="button" value="Neues Fenster"
+		onclick="fensterOeffnen()">
+	<input type="button" value="Funktion aufrufen"
+		onclick="fktAufrufen()">
+	</p>
+</form>
+</body>
+</html>

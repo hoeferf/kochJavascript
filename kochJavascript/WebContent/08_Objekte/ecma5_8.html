@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function X() {
+	this.a = 123;
+}
+
+var obj = Object.create(new X(), {
+	"b": {
+		value: 123,
+		enumerable: true
+	},
+	"c": {
+		value: 456,
+		enumerable: false
+	}
+});
+
+var ausg = [];
+
+for (i in obj) {
+	ausg.push(i);
+}
+
+alert("for..in: " + ausg.join(", ")); // b, a
+
+alert("keys(): " + Object.keys(obj).join(", ")); // b
+
+alert("getOwnPropertyNames(): " +
+	Object.getOwnPropertyNames(obj).join(", ")); // b, c
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Formularelemente deaktivieren</title>
+<script type="text/javascript">
+
+function eingabefeld() {
+	var r = document.form1.sport;
+	var t = document.form1.sportart;
+	t.disabled = !r[0].checked;
+}
+
+</script>
+
+</head>
+<body>
+
+<form id="form1" name="form1">
+	<p>
+	Treiben Sie Sport?<br>
+	<input type="radio" id="sport" name="sport" value="Ja"
+		checked="checked" onchange="eingabefeld()">Ja
+	<input type="radio" id="sport" name="sport" value="Nein"
+		onchange="eingabefeld()">Nein
+	<br><br>
+
+	Welche Sportart?<br>
+	<input type="text" id="sportart" name="sportart"
+		value="">
+	</p>
+</form>
+
+</body>
+</html>

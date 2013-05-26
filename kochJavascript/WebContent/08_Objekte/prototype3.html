@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prototype</title>
+</head>
+<body>
+<script type="text/javascript">
+
+String.prototype.umdrehen = function() {
+	var str = "";
+	for (i = this.length-1; i >= 0; i--) {
+		str += this.charAt(i);
+	}
+	return str;
+}
+
+var s = new String("JavaScript");
+alert(s.umdrehen());
+
+</script>
+</body>
+</html>

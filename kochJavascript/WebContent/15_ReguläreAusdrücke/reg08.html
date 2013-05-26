@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RegExp</title>
+</head>
+<body>
+
+<div id="ausgabe"></div>
+
+<script type="text/javascript">
+
+var ausg = document.getElementById("ausgabe");
+var str = "Dilbert Dogbert Catbert Ratbert";
+var reg = /\br(\w*)bert/i;
+
+var found = reg.exec(str);
+
+if (found) {
+	ausg.innerHTML +=	found.index + "<br />" +
+						found.input + "<br />" +
+						found[0] + "<br />" +
+						found[1];
+}
+
+</script>
+</body>
+</html>

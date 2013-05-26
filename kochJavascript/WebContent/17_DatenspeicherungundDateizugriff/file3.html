@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drag & Drop</title>
+
+<style>
+  .dropzone {
+    height: 80px;
+    border: 1px dashed #aaaaaa;
+  }
+
+  .vorschau {
+  	height: 70px;
+  	margin: 5px 0px 0px 5px;
+  }
+</style>
+
+<script type="text/javascript">
+
+function drop(e) {
+	e.preventDefault();
+
+  	var datei = e.dataTransfer.files[0];
+
+  	if (datei && datei.type.match("image/*")) {
+		var reader = new FileReader();
+
+		reader.onload = function(event) {
+			var ausg = document.getElementById("div1");
+
+			ausg.innerHTML += "<img src='" + event.target.result + "' class='vorschau'>";
+		}
+
+		reader.readAsDataURL(datei);
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="div1" class="dropzone"
+	ondragenter="return false;"
+	ondragover="return false;"
+	ondrop="drop(event)">
+</div>
+
+</body>
+</html>

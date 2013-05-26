@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RegExp</title>
+</head>
+<body>
+
+<div id="ausgabe"></div>
+
+<script type="text/javascript">
+
+var ausg = document.getElementById("ausgabe");
+var str = ["abc", "aabc", "aaabc", "aaaabc", "aaabcbc",
+			"aaaaaxyzaaabc", "bc", "aaaxbc", "aaabxyzc"];
+
+var reg = /a{1,3}bc/;
+
+for (i in str) {
+	var found = reg.exec(str[i]);
+	if (found)
+		ausg.innerHTML += str[i] + " - gefunden: " + found;
+	else ausg.innerHTML += str[i] + " - nicht gefunden";
+	ausg.innerHTML += "<br>";
+}
+
+</script>
+</body>
+</html>

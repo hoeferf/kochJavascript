@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Objekte</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var person1 = {
+	name: "Fred",
+	begruessung: function() {
+		alert("Hallo " + this.name + "!");
+	},
+	adresse: {
+		strasse: "Hauptstrasse 17",
+		ort: "12345 Musterstadt",
+		ausgabe: function() {
+			alert(this.strasse + ", " + this.ort);
+		}
+	}
+};
+
+person1.adresse.ausgabe();
+
+</script>
+</body>
+</html>

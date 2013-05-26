@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkbox</title>
+<script type="text/javascript">
+
+function test() {
+	if (document.meinFormular.auswahl.checked)
+		alert("Das Feld ist markiert!")
+	else alert("Das Feld ist nicht markiert!");
+}
+
+</script>
+</head>
+<body>
+<form id="meinFormular" name="meinFormular">
+	<p>
+	<input type="checkbox" id="auswahl" name="auswahl">
+	<br>
+	<input type="button" value="Anzeigen"
+		onclick="test()">
+	</p>
+</form>
+</body>
+</html>

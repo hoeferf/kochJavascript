@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Suchstrings</title>
+<script type="text/javascript">
+
+function uebergabeHolen() {
+	uebergabe = location.search;
+	uebergabe = uebergabe.substring(1, uebergabe.length);
+	document.meinFormular.ausgabe.value =
+		decodeURIComponent(uebergabe);
+}
+
+</script>
+</head>
+<body onload="uebergabeHolen()">
+Dies ist die Eingabe von der letzten Seite:
+<form id="meinFormular" name="meinFormular">
+	<p>
+	<textarea id="ausgabe" name="ausgabe"
+		rows="10" cols="40"></textarea>
+	</p>
+</form>
+</body>
+</html>

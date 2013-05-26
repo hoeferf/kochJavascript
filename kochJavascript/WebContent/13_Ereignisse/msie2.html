@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MSIE</title>
+<script type="text/javascript">
+
+function reaktion() {
+	alert('Button-Objekt');
+	window.event.cancelBubble = true;
+}
+
+</script>
+</head>
+<body>
+
+<form onclick="alert('Form-Objekt')">
+	<p>
+	<input type="button" value="Test"
+		onclick="reaktion();">
+	</p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Drag & Drop</title>
+
+<script type="text/javascript">
+
+var isW3C = false;
+var isIE = false;
+
+var dx = 0;
+var dy = 0;
+var current = null;
+var zIndexTop = 10;
+
+function init() {
+
+	if (document.addEventListener) isW3C = true;
+	else if (window.event) isIE = true;
+
+	document.onmousedown = startDrag;
+	document.onmouseup = endDrag;
+
+}
+
+function startDrag(e) {
+	var found = false;
+
+	var obj;
+
+	if (isW3C) obj = e.target;
+	else if (isIE) {
+		e = window.event;
+		obj = e.srcElement;
+	}
+	else return;
+
+	if  ((obj.parentNode.id != null) &&
+		(obj.parentNode.id.indexOf("bild") != -1)) {
+			current = obj.parentNode.style;
+
+			dx = e.clientX - parseInt(current.left);
+			dy = e.clientY - parseInt(current.top);
+
+			// Setze Objekt nach oben
+			zIndexTop++;
+			current.zIndex = zIndexTop;
+
+	  		if (isW3C) {
+				document.addEventListener("mousemove", drag, true);
+			} else {
+				document.attachEvent("onmousemove", drag);
+			}
+			return false;
+	}
+
+	// Benutzer hat auf kein Objekt geklickt
+	current = null;
+	return false;
+}
+
+function drag(e) {
+	if (current != null) {
+		if (isIE) e = window.event;
+		current.top = parseInt(e.clientY) - dy;
+		current.left = parseInt(e.clientX) - dx;
+	}
+
+	return false;
+}
+
+function endDrag(e) {
+	if (isW3C) {
+		document.removeEventListener("mousemove", drag, true);
+	} else if (isIE) {
+		document.detachEvent("onmousemove", drag);
+	}
+
+	current = null;
+
+	return false;
+}
+
+</script>
+
+</head>
+
+<body onload="init()">
+
+<div id="bild1" style="position:absolute; left:50px;
+	top:100px; width:120px; z-index:1;"><img id="objekt1"
+	src="kugel.gif" alt="Obj1"
+	width="120" height="118" /></div>
+
+<div id="bild2" style="position:absolute; left:70px;
+	top:120px; width:115px; z-index:2;"><img id="objekt2"
+	src="wuerfel.gif" alt="Obj2"
+	width="115" height="145" /></div>
+
+<div id="bild3" style="position:absolute; left:90px;
+	top:150px; width:140px; z-index:3;"><img id="objekt3"
+	src="zyl.gif" alt="Obj3"
+	width="140" height="121" /></div>
+</body>
+</html>

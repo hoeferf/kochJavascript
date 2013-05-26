@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function vergleicheZahlen(a,b) {
+	return a - b;
+}
+
+var meinArray = new Array();
+meinArray[0] = 3;
+meinArray[1] = 17;
+meinArray[2] = 0.004;
+
+// Unsortiert
+alert("Unsortiert: \n" + meinArray.join(", "));
+
+// Nach alphabetischer Reihenfolge sortiert
+meinArray.sort();
+alert("Nach alphabetischer Reihenfolge sortiert: \n" +
+	meinArray.join(", "));
+
+// Nach Zahlenwerten sortiert
+meinArray.sort(vergleicheZahlen);
+alert("Nach Zahlenwerten sortiert: \n" +
+	meinArray.join(", "));
+
+</script>
+</body>
+</html>

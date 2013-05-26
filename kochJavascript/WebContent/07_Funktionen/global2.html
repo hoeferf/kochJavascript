@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Globale und lokale Variablen</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function funktion1() {
+	// wird global definiert!
+	y = 17;
+}
+
+function funktion2() {
+	// kein Fehler, wenn funktion1()
+	// vorher aufgerufen wurde
+	alert("Der Wert von y ist " + y);
+}
+
+// Funktionsaufrufe
+funktion1();
+funktion2();
+
+</script>
+</body>
+</html>

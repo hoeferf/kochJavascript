@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MSIE</title>
+<script type="text/javascript">
+
+var anz;
+var an = false;
+
+function init() {
+	document.attachEvent("onmousedown", captureAn);
+	document.attachEvent("onmouseup", captureAus);
+}
+
+function captureAn() {
+	anz = document.getElementById("anzeige");
+	anz.onmousemove = ausgabe;
+	anz.setCapture();
+	an = true;
+}
+
+function captureAus() {
+	anz.releaseCapture();
+	an = false;
+}
+
+function ausgabe() {
+	if (an) {
+		var evt = window.event;
+		anz.firstChild.nodeValue = evt.x + "/" + evt.y;
+		anz.style.left = evt.x + 10;
+		anz.style.top = evt.y - 15;
+	}
+}
+
+</script>
+</head>
+<body onload="init()">
+	<div style="position: absolute;" id="anzeige">0/0</div>
+</body>
+</html>

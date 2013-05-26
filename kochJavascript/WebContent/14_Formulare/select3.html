@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select</title>
+<script type="text/javascript">
+
+function setzeText(liste) {
+	liste[0].text = "Neuer Text";
+}
+
+function neuesElement(liste) {
+	var n = liste.length;
+	liste[n] = new Option("Neu");
+}
+
+function entferneElement(liste) {
+	liste[2] = null;
+}
+
+</script>
+</head>
+<body>
+<form>
+	<p>
+	<select id="liste" name="liste" size="3"
+		multiple="multiple">
+		<option>element 0</option>
+		<option>element 1</option>
+		<option>element 2</option>
+		<option>element 3</option>
+		<option>element 4</option>
+	</select>
+	<br>
+	<input type="button" value="Neuer Text"
+		onclick="setzeText(this.form.liste)">
+	<input type="button" value="Neues Element"
+		onclick="neuesElement(this.form.liste)">
+	<input type="button" value="Entferne Element"
+		onclick="entferneElement(this.form.liste)">
+	</p>
+</form>
+</body>
+</html>

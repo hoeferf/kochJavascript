@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vektor Beispiel</title>
+    <script type="text/javascript">
+    function init() {
+    	var canvas = document.getElementById("ausgabe");
+    	if (canvas.getContext) {
+        	var c = canvas.getContext("2d");
+
+			c.beginPath();
+			c.moveTo(40, 10);
+			c.lineTo(10, 60);
+			c.lineTo(70, 60);
+			c.closePath();
+			c.stroke();
+
+			c.beginPath();
+			c.moveTo(110, 10);
+			c.lineTo(80, 60);
+			c.lineTo(140, 60);
+			c.fill();
+
+			c.beginPath();
+			c.moveTo(180, 10);
+			c.lineTo(150, 35);
+			c.lineTo(180, 60);
+			c.lineTo(210, 35);
+			c.closePath();
+			c.stroke();
+
+			c.beginPath();
+			c.moveTo(250, 10);
+			c.lineTo(220, 35);
+			c.lineTo(250, 60);
+			c.lineTo(280, 35);
+			c.fill();
+
+
+
+      	}
+    }
+    </script>
+  </head>
+  <body onload="init()">
+    <canvas id="ausgabe" width="500" height="300"></canvas>
+
+  </body>
+</html>

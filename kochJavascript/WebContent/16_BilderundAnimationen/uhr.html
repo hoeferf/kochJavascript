@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Uhr</title>
+
+	<script type="text/javascript">
+
+		function init() {
+			var canvas = document.getElementById("uhr");
+			var neueUhr = new Uhr(canvas);
+		}
+
+		function Uhr(canvas) {
+			var context = canvas.getContext("2d");
+			var groesse = Math.min(canvas.width, canvas.height) / 2;
+			var interval;
+
+			this.start = function() {
+				interval = setInterval(stellen, 1000);
+			}
+
+			this.stopp = function() {
+				if (interval) clearInterval(interval);
+			}
+
+			function stellen() {
+				// Canvas loeschen
+			    canvas.width = canvas.width;
+
+				// Stundenmarkierungen zeichnen
+				for (i = 0; i < 12; i++) {
+					zeichnen(9/10 * groesse, groesse, i*30, 4 * groesse/100, "#000");
+				}
+
+				var d = new Date();
+
+				var h = d.getHours();
+				h = h>12 ? h-12 : h;
+
+				// Winkel der einzelnen Zeiger berechnen
+				var pos_h = (d.getSeconds()+d.getMinutes()*60+h*3600)/120;
+				var pos_m = (d.getSeconds()+d.getMinutes()*60)/10;
+				var pos_s = d.getSeconds()*6;
+
+				// Zeiger zeichnen
+				zeichnen(0, 2/3 * groesse, pos_h, 6 * groesse/100, "#f00");
+				zeichnen(0, groesse, pos_m, 3 * groesse/100, "#000");
+				zeichnen(0, groesse, pos_s, 1 * groesse/100, "#00f");
+			}
+
+			function zeichnen(start, laenge, winkel, breite, farbe) {
+				var g = (winkel-90)*Math.PI/180;
+
+				context.beginPath();
+				context.moveTo(groesse + start * Math.cos(g), groesse + start * Math.sin(g));
+				context.lineTo(groesse + laenge * Math.cos(g), groesse + laenge * Math.sin(g));
+				context.strokeStyle = farbe;
+				context.lineWidth = breite;
+				context.stroke();
+			}
+
+			this.start();
+		}
+
+	</script>
+
+</head>
+<body onload="init()">
+
+<br>
+<center>
+<canvas id="uhr" width="200" height="200">
+</canvas>
+</center>
+
+</body>
+</html>

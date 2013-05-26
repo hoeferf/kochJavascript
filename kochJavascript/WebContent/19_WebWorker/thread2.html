@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Web Worker</title>
+
+<script type="text/javascript">
+
+var c;
+var start;
+var interval2;
+var worker;
+
+function init() {
+
+	worker = new Worker("workerThread.js");
+	worker.onmessage = antwortWorker;
+
+	var canvas = document.getElementById("ausgabe");
+    if (canvas.getContext) {
+
+    	c = canvas.getContext("2d");
+
+		start = new Date().getTime();
+
+		c.font = "20px Times New Roman";
+		c.fillStyle = "Black";
+		c.fillText("interval1", 125, 30);
+		c.fillText("interval2", 345, 30);
+
+		c.save();
+		c.translate(20, 210);
+		c.rotate(1.5*Math.PI);
+		c.fillText("Zeit", 0, 0);
+		c.restore();
+
+		c.beginPath();
+		c.moveTo(30, 50);
+		c.lineTo(30, 330);
+		c.stroke();
+
+		c.beginPath();
+		c.moveTo(25, 323);
+		c.lineTo(30, 330);
+		c.lineTo(35, 323);
+		c.fill();
+
+		interval2 = setInterval(zweitesInterval, 20);
+		setTimeout(beenden, 300);
+	}
+}
+
+function antwortWorker(event) {
+	zeichnen(1, event.data[0], event.data[1]);
+}
+
+function zweitesInterval() {
+	var anfang = new Date().getTime();
+
+	for (var i=0; i<1000000; i++) {
+		var j = i * i;
+	}
+
+	var ende = new Date().getTime();
+
+	zeichnen(2, anfang, ende);
+}
+
+function zeichnen(nr, anfang, ende) {
+	var y1 = anfang - start + 30;
+	var y2 = ende - anfang;
+
+	var x = 60 + (nr-1) * 220;
+
+	c.strokeRect(x, y1, 200, y2);
+}
+
+function beenden() {
+	worker.terminate();
+	clearInterval(interval2);
+}
+
+</script>
+
+</head>
+<body onload="init()">
+
+<canvas id="ausgabe" width="500" height="400">
+</canvas>
+
+</body>
+</html>

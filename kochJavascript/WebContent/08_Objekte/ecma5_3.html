@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var a = new Object();
+
+alert(Object.isExtensible(a)); // true
+a.name = "abc";
+
+Object.preventExtensions(a);
+alert(Object.isExtensible(a)); // false
+
+a.neueEigenschaft = "def"; // nicht möglich
+
+alert(a.neueEigenschaft);
+
+</script>
+</body>
+</html>

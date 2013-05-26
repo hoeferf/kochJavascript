@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select</title>
+<script type="text/javascript">
+
+function ausgabe(auswahl) {
+	var text = "Index: ";
+	text += auswahl.selectedIndex;
+
+	// Zeilenumbruch
+	text += "\n";
+	text += "Text: ";
+	text += auswahl[auswahl.selectedIndex].text;
+
+	alert(text);
+}
+
+</script>
+</head>
+<body>
+<form>
+	<p>
+	<select id="liste" name="liste">
+		<option>Option 1</option>
+		<option>Option 2</option>
+		<option>Option 3</option>
+		<option>Option 4</option>
+		<option>Option 5</option>
+	</select>
+	<input type="button" value="Wert anzeigen"
+		onclick="ausgabe(this.form.liste)">
+	</p>
+</form>
+</body>
+</html>

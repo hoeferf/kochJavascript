@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajax und Formulare</title>
+<meta http-equiv="Content-Script-Type"
+	content="text/javascript" />
+
+<script type="text/javascript">
+
+var req = null;
+
+function getXMLHttpRequest() {
+	var httpReq = null;
+	if (window.XMLHttpRequest) {
+		httpReq = new XMLHttpRequest();
+	} else if (typeof ActiveXObject != "undefined") {
+		httpReq = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return httpReq;
+}
+
+function sendRequest(url, handler, param) {
+	req = getXMLHttpRequest();
+	if (req) {
+		req.onreadystatechange = handler;
+		req.open("get", url + "?value=" + param, true);
+		req.send(null);
+	}
+}
+
+function zieleErmitteln() {
+	var abflug = document.getElementById("abflug");
+	if (abflug.value != "ausgangswert") {
+		sendRequest("ziele.php",zieleAnzeigen,abflug.value);
+	}
+}
+
+function zieleAnzeigen() {
+	if (req.readyState == 4) {
+
+		var str = req.responseText;
+		var liste = str.split("+");
+
+		var ziele = document.getElementById("ziel");
+
+		// bisherige Eintraege loeschen
+		for (i = ziele.length; i > 0; i--) {
+			ziele[i] = null;
+		}
+
+		// neue Eintraege
+		for (i = 0; i < liste.length; i++) {
+			ziele[i+1] = new Option(liste[i]);
+		}
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<form>
+<p>
+Abflug:
+<select id="abflug" onchange="zieleErmitteln()">
+	<option value="ausgangswert">Bitte w&auml;hlen</option>
+	<option value="Frankfurt">Frankfurt</option>
+	<option value="London">London</option>
+	<option value="Paris">Paris</option>
+	<option value="Rom">Rom</option>
+	<option value="Stockholm">Stockholm</option>
+</select>
+<br /><br />
+Ziel:
+<select id="ziel">
+	<option value="ausgangswert">Bitte w&auml;hlen</option>
+</select>
+</p>
+</form>
+
+</body>
+</html>

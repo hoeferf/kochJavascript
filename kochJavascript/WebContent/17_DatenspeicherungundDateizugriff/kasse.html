@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virtueller Warenkorb - Kasse</title>
+
+<script type="text/javascript" src="cookies.js">
+// Bibliotheks-Datei einbinden
+</script>
+
+<script type="text/javascript">
+
+function ausgabe() {
+	var cookieStr = holeCookie("einkauf");
+	var bestellung;
+
+	if (cookieStr != null)
+		bestellung = cookieStr.split("##");
+	for (i in bestellung) {
+		bestellung[i] = bestellung[i].split("**");
+	}
+
+	var gesamtpreis = 0;
+
+	for (i in bestellung) {
+		if (bestellung[i][1] > 0) {
+			// Gesamtsumme berechnen
+			gesamtpreis += bestellung[i][1] *
+				bestellung[i][2];
+		}
+	}
+
+	var ausg = document.getElementById("ausgabe");
+	ausg.innerHTML += "Gesamtsumme: <b> " + gesamtpreis +
+		" Euro</b>";
+}
+
+</script>
+
+</head>
+<body onload="ausgabe()">
+
+<div id="ausgabe"></div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Timer</title>
+
+<script type="text/javascript">
+
+var meinTimer;
+
+function starten() {
+	meinTimer = setTimeout("alert('Fertig!')", 1000);
+}
+
+function anhalten() {
+	if (meinTimer) clearTimeout(meinTimer);
+}
+
+</script>
+
+</head>
+<body>
+<form>
+	<p>
+	<input type="button" value="Start"
+		onclick="starten()">
+	<input type="button" value="Stopp"
+		onclick="anhalten()">
+	</p>
+</form>
+</body>
+</html>

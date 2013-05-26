@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ECMAScript 5</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var obj = {};
+
+Object.defineProperty(obj, "name",
+	{ value: "abc",
+		writable: false
+	});
+
+alert(obj.name); // abc
+
+obj.name = "xyz";
+
+alert(obj.name); // abc
+
+</script>
+</body>
+</html>

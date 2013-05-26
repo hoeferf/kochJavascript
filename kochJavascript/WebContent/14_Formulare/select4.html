@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Select-Objekte</title>
+<script type="text/javascript">
+
+var ziele = new Array();
+ziele["Frankfurt"]= ["London", "Paris", "Rom", "Stockholm"];
+ziele["London"]= ["Frankfurt", "Paris", "Stockholm"];
+ziele["Paris"]= ["Frankfurt", "London"];
+ziele["Rom"]= ["Frankfurt", "Stockholm"];
+ziele["Stockholm"]= ["Frankfurt", "London", "Rom"];
+
+function zieleAnzeigen() {
+	var abflug = document.getElementById("abflug").value;
+	var ausgabe = document.getElementById("ausgabe");
+
+	// bisherige Eintraege loeschen
+	for (i = ausgabe.length; i > 0; i--) {
+		ausgabe[i] = null;
+	}
+
+	// neue Eintraege
+	if (abflug != "ausgangswert") {
+		for (i = 0; i < ziele[abflug].length; i++) {
+			ausgabe[i+1] = new Option(ziele[abflug][i]);
+		}
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<form>
+<p>
+Abflug:
+<select id="abflug" onchange="zieleAnzeigen()">
+	<option value="ausgangswert">Bitte w&auml;hlen</option>
+	<option value="Frankfurt">Frankfurt</option>
+	<option value="London">London</option>
+	<option value="Paris">Paris</option>
+	<option value="Rom">Rom</option>
+	<option value="Stockholm">Stockholm</option>
+</select>
+<br><br>
+Ziel:
+<select id="ausgabe">
+	<option value="ausgangswert">Bitte w&auml;hlen</option>
+</select>
+</p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RegExp</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var str = "eins zwei drei";
+var newstr = str.replace(/^(.+) (.+) (.+)/, "$3 $2 $1");
+// newstr ist jetzt "drei zwei eins"
+alert(newstr);
+
+</script>
+
+</body>
+</html>

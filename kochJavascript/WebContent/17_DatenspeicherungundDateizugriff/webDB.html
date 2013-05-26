@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebDB</title>
+
+	<script type="text/javascript">
+
+	var db;
+
+	function init() {
+		db = openDatabase("CDSammlung", "1.0", "Meine CD-Sammlung", 1 * 1024 * 1024);
+		db.transaction( function (tx) {
+			tx.executeSql("CREATE TABLE IF NOT EXISTS musik (id unique, interpret, titel)");
+		});
+	}
+
+	function schreiben() {
+		var id = document.getElementById("id").value;
+		var interpret = document.getElementById("interpret").value;
+		var titel = document.getElementById("titel").value;
+
+		db.transaction( function (tx) {
+			tx.executeSql("INSERT INTO musik (id, interpret, titel) VALUES (?, ?, ?)",
+			              [id, interpret, titel], null,
+			              function (tx, ergebnis) { alert("Fehler: " + ergebnis.code); });
+		});
+	}
+
+	function lesen(interpret) {
+		db.transaction( function (tx) {
+			tx.executeSql("SELECT * FROM musik WHERE interpret=?", [interpret], function (tx, ergebnis) {
+				var ausg = document.getElementById("ausg");
+				ausg.innerHTML = "";
+
+				var len = ergebnis.rows.length;
+				for (var i = 0; i < len; i++) {
+					// for (j in ergebnis.rows.item(i)) {
+					// alert(j);
+					// }
+
+					ausg.innerHTML = ausg.innerHTML +
+						ergebnis.rows.item(i).id + " - " +
+						ergebnis.rows.item(i).interpret + " - " +
+						ergebnis.rows.item(i).titel + "<br />";
+				}
+			});
+		});
+	}
+
+	</script>
+
+</head>
+<body onload="init()">
+
+<form>
+	ID: <input type="text" id="id" value=""><br>
+	Interpret: <input type="text" id="interpret" value=""><br>
+	Titel: <input type="text" id="titel" value=""><br>
+
+	<input type="button" value="CD hinzuf&uuml;gen" onclick="schreiben()">
+
+	<br><br>
+
+	Interpret: <input type="text" id="interpret2" value=""><br>
+	<input type="button" value="CDs suchen"
+			onclick="lesen(this.form.interpret2.value)">
+
+</form>
+
+Gefundene CDs:<br>
+<div id="ausg">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3C</title>
+<script type="text/javascript">
+
+function init() {
+
+	var b1 = document.getElementById("b1");
+	var b2 = document.getElementById("b2");
+	var f1 = document.getElementById("f1");
+	var l1 = document.getElementById("l1");
+
+	b1.addEventListener("click", ausgabe, false);
+	b2.addEventListener("click", ausgabe, false);
+
+	f1.addEventListener("click", ausgabe, false);
+	f1.addEventListener("click", ausgabe, true);
+
+	l1.addEventListener("click", ausgabe, false);
+
+	document.addEventListener("click", ausgabe, true);
+}
+
+function ausgabe(evt) {
+	if (evt.currentTarget == document) {
+		alert("document");
+	} else {
+		if (evt.currentTarget != null) {
+			alert(evt.currentTarget.id);
+		} else {
+			alert(evt.target.nodeValue);
+		}
+	}
+}
+
+</script>
+</head>
+<body onload="init()">
+
+<form id="f1">
+	<p>
+	<input type="button" id="b1" value="Button 1">
+	<input type="button" id="b2" value="Button 2">
+	</p>
+</form>
+
+<p>
+<a href="link.html" id="l1">Text</a>
+</p>
+
+</body>
+</html>

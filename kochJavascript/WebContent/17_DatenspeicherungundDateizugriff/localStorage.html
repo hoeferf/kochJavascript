@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>localStorage</title>
+
+	<script type="text/javascript">
+
+	function leseWert() {
+		var name = document.getElementById("name");
+		var wert = document.getElementById("wert");
+
+		if (localStorage) {
+			wert.value = localStorage.getItem(name.value);
+		}
+	}
+
+	function schreibeWert() {
+		var name = document.getElementById("name");
+		var wert = document.getElementById("wert");
+
+		if (localStorage) {
+			localStorage.setItem(name.value, wert.value);
+		}
+	}
+
+	</script>
+
+</head>
+<body>
+
+<form>
+	Name: <input type="text" id="name" value=""><br>
+	Wert: <input type="text" id="wert" value=""><br>
+	<input type="button" value="Lesen" onclick="leseWert()">
+	<input type="button" value="Schreiben" onclick="schreibeWert()">
+</form>
+
+</body>
+</html>

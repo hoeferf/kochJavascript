@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lotto</title>
+
+<script type="text/javascript">
+
+function format(zahl) {
+	var erg = "";
+	var rest = zahl % 1000;
+	if (zahl>999) {
+		erg = format(Math.floor(zahl/1000));
+		erg = erg!="" ? erg + "." : "";
+		erg = erg + (rest < 100 ? "0" : "") + (rest < 10 ? "0" : "");
+	}
+	erg = erg + rest;
+	return erg;
+}
+
+var anzahl = 0;
+var gesamt = 0;
+
+var tipp;
+var worker = new Worker('lottofee.js');;
+
+var r;
+
+function start() {
+	r = [0, 0, 0, 0, 0, 0, 0]
+	gesamt = 0;
+
+	// Pruefen, ob Zahlen 1-49 und keine doppelten Einträge
+
+	tipp = [parseInt(document.getElementById("zahl1").value),
+			parseInt(document.getElementById("zahl2").value),
+			parseInt(document.getElementById("zahl3").value),
+			parseInt(document.getElementById("zahl4").value),
+			parseInt(document.getElementById("zahl5").value),
+			parseInt(document.getElementById("zahl6").value)];
+
+	// 	worker = new Worker('lottofee.js');
+	anzahl = document.getElementById("anzahl").value;
+	worker.postMessage(tipp); // Start
+}
+
+worker.onmessage = function (event) {
+	var r2 = event.data;
+
+	gesamt = gesamt + 1000;
+
+	var ausg = document.getElementById("ausgabe");
+	c = ausg.getContext("2d");
+
+	c.clearRect(0,0,ausg.width,ausg.height);
+
+	for (i = 0; i <= 6; i++) {
+		r[i] = r[i] + r2[i];
+
+		c.font = "10px sans-serif"
+		c.fillText(i + " Richtige:", 0, i*25+20);
+
+		c.beginPath();
+		c.moveTo(70, i*25+17);
+		c.lineTo(70 + r[i]/anzahl*1200, i*25+17);
+		c.strokeStyle = "#a00";
+		c.lineWidth = 8;
+		c.stroke();
+		c.fillText(format(r[i]), 80 + r[i]/anzahl*1200, i*25+20);
+	}
+
+	if (gesamt < anzahl) worker.postMessage(tipp); // Weitermachen
+};
+
+</script>
+
+</head>
+<body>
+
+<form>
+
+	Lottozahlen:
+	<input type="text" id="zahl1" size="2" value="12">
+	<input type="text" id="zahl2" size="2" value="17">
+	<input type="text" id="zahl3" size="2" value="23">
+	<input type="text" id="zahl4" size="2" value="25">
+	<input type="text" id="zahl5" size="2" value="30">
+	<input type="text" id="zahl6" size="2" value="45">
+	<br>
+	Anzahl Ziehungen:
+	<input type="text" id="anzahl" value="100000">
+	<input type="button" value="Start" onclick="start()">
+</form>
+
+<br><br>
+
+<canvas id="ausgabe" width="1000" height="200">
+</canvas>
+
+</body>
+</html>

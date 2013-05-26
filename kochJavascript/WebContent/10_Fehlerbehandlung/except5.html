@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exceptions</title>
+</head>
+<body>
+<script type="text/javascript">
+
+function MeinFehler(msg) {
+	this.message = msg;
+	this.name = "MeinFehler";
+}
+
+function test() {
+	throw new MeinFehler("Fehler!");
+}
+
+try {
+	test();
+} catch (e) {
+	if (e instanceof MeinFehler) {
+		alert("Fehler 1");
+	} else {
+		alert("Fehler 2");
+	}
+}
+
+</script>
+</body>
+</html>

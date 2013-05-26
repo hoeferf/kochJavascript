@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Radio</title>
+<script type="text/javascript">
+
+function wertSetzen() {
+	document.meinFormular.auswahl[1].checked = true;
+}
+
+</script>
+</head>
+<body>
+<form id="meinFormular" name="meinFormular">
+	<p>
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option1" checked="checked">Option 1
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option2">Option 2
+	<input type="radio" id="auswahl" name="auswahl"
+		value="Option3">Option 3
+	<br>
+	<input type="button" value="Wert setzen"
+		onclick="wertSetzen()">
+	</p>
+</form>
+</body>
+</html>

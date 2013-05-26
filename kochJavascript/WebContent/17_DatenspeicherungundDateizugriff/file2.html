@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>File API</title>
+
+<script type="text/javascript">
+
+function init() {
+	var eing = document.getElementById("eingabe")
+	eing.addEventListener("change", dateiGewaehlt, false);
+}
+
+function dateiGewaehlt(e) {
+  	var datei = e.target.files[0];
+
+  	if (datei && datei.type.match("text/*")) {
+
+		var reader = new FileReader();
+
+		reader.onload = function(event) {
+			var ausgabe = document.getElementById("ausgabe");
+
+			var str = event.target.result;
+
+			// Tags kodieren
+			str = str.replace(/&/g,"&amp;");
+			str = str.replace(/</g,"&lt;");
+			str = str.replace(/>/g,"&gt;");
+
+			ausgabe.innerHTML = "<pre>" + str + "</pre>";
+		}
+
+		reader.readAsText(datei);
+	} else {
+		ausgabe.innerHTML = "Keine Textdatei.";
+	}
+}
+
+</script>
+
+</head>
+<body onload="init()">
+
+<form>
+<input type="file" id="eingabe">
+</form>
+
+<div style="background: #ffff99" id="ausgabe">
+</div>
+
+</body>
+</html>

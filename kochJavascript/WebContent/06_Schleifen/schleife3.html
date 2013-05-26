@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Schleifen</title>
+</head>
+<body>
+
+<div id="ausgabe"></div>
+
+<script type="text/javascript">
+
+var ausgabe = document.getElementById("ausgabe");
+
+for (var i = 10; i <= 100; i += 10) {
+	ausgabe.innerHTML += "Celsius: " + i +
+		" - Fahrenheit: " + (9/5 * i + 32) + "<br>";
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virtueller Warenkorb - Laden</title>
+
+<script type="text/javascript" src="cookies.js">
+// Bibliotheks-Datei einbinden
+</script>
+
+<script type="text/javascript">
+
+// Array der angebotenen Produkte
+var produkte= new Array( "Produkt1",
+					"Produkt2",
+					"Produkt3");
+
+// Preise festlegen
+var preis = new Array();
+preis["Produkt1"] = 5;
+preis["Produkt2"] = 7;
+preis["Produkt3"] = 8;
+
+function kasse() {
+	var ware = new String();
+	for (i in produkte) {
+		// Eingegebenen Wert aus Formular holen
+		var wert = document.getElementById(produkte[i]).value;
+		var anz = parseInt(wert);
+		if (isNaN(anz)) anz = 0;
+		ware += produkte[i] + "**" + anz + "**"
+			+ preis[produkte[i]] + "##";
+	}
+
+	// '##' am Ende des Strings entfernen
+	ware = ware.substring(0, ware.length-2);
+
+	// Cookie schreiben
+	setzeCookie("einkauf", ware);
+
+	// Datei kasse.html laden
+	location.href = "kasse.html";
+}
+
+</script>
+</head>
+<body>
+
+<form id="eingabe">
+	<p>
+	Produkt1 - Preis 5 Euro
+	<input type="text" id="Produkt1" size="3">
+	<br>
+	Produkt2 - Preis 7 Euro
+	<input type="text" id="Produkt2" size="3">
+	<br>
+	Produkt3 - Preis 8 Euro
+	<input type="text" id="Produkt3" size="3">
+	<br>
+	<input type="button" value="Kasse" onclick="kasse()">
+	</p>
+</form>
+
+</body>
+</html>

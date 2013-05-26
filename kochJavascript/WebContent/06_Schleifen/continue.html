@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>break</title>
+</head>
+<body>
+
+<div id="ausgabe"></div>
+
+<script type="text/javascript">
+
+var ausgabe = document.getElementById("ausgabe");
+
+for (var i = 1; i <= 10; i++) {
+	if (i == 5) continue;
+	ausgabe.innerHTML += "Nummer " + i + "<br>";
+}
+
+</script>
+</body>
+</html>

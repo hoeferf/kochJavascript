@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <script type="text/javascript">
+    function init() {
+    	var canvas = document.getElementById("ausgabe");
+    	if (canvas.getContext) {
+        	var c = canvas.getContext("2d");
+
+			c.fillRect(10.5, 10.5, 50, 50);
+			c.strokeRect(70.5, 10.5, 50, 50);
+
+			c.fillRect(130.5, 10.5, 100, 50);
+			c.clearRect(150.5, 15.5, 60, 40);
+      	}
+    }
+    </script>
+  </head>
+  <body onload="init()">
+    <canvas id="ausgabe" width="500" height="300"></canvas>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>indexOf()</title>
+<script type="text/javascript">
+
+function pruefen(eingabe, erlaubt) {
+	var korrekt = true;
+	for (var i = 0; i < eingabe.length; i++) {
+		var zeichen = eingabe.charAt(i);
+		if (erlaubt.indexOf(zeichen) == -1)
+			korrekt = false;
+	}
+	return korrekt;
+}
+
+function test(eingabe) {
+	if (!pruefen(eingabe, "0123456789 -+/.,()")) {
+		alert("Eingabe nicht korrekt.");
+	} else {
+		alert("Eingabe ok!");
+	}
+}
+
+</script>
+</head>
+
+<body>
+<form>
+<p>
+Telefon:
+<input type="text" name="Telefon" value="">
+<input type="button" value="Ueberpruefen"
+	onclick="test(this.form.Telefon.value)">
+</p>
+</form>
+</body>
+</html>

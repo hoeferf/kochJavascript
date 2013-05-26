@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DOM-Test</title>
+
+<script type="text/javascript">
+
+function init() {
+
+// 1. Aenderung
+var x1 = document.getElementById("a2");
+var y1 = x1.childNodes[1].childNodes[0];
+y1.nodeValue = "Versuch";
+
+// 2. Aenderung
+var x2 = document.getElementById("b1");
+var y2 = document.createTextNode("abc");
+x2.appendChild(y2);
+
+// 3. Aenderung
+var x3 = document.getElementById("b1");
+var y3 = document.createElement("b");
+var z3 = document.createTextNode("xyz");
+y3.appendChild(z3);
+x3.appendChild(y3);
+
+// 4. Aenderung
+var x4 = document.getElementById("b1");
+var y4 = document.createElement("img");
+y4.setAttribute("src", "dpunkt.gif");
+x4.appendChild(y4);
+
+// 5. Aenderung
+var x5 = document.getElementById("b1");
+var y5 = document.getElementsByTagName("b")[0];
+x5.appendChild(y5);
+
+// 6. Aenderung
+var x6 = document.getElementById("b1");
+var y6 = document.getElementById("bd");
+y6.removeChild(x6);
+
+}
+
+</script>
+
+</head>
+<body id="bd" onload="init()">
+
+<div id="a1">
+	<div id="a2">
+		Dies ist ein <i>Test</i>...
+	</div>
+</div>
+
+<div id="b1">
+</div>
+
+</body>
+</html>
